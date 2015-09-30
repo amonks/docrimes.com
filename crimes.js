@@ -2,6 +2,7 @@
 
 var container
 var f = 0
+var og
 var camera
 var crimes
 var scene
@@ -68,6 +69,7 @@ function init () {
         child.material = new THREE.MeshNormalMaterial({ overdraw: 0.5 })
       }
     })
+    og = crimes.geometry.attributes.position.array
     crimes.geometry.dynamic = true
     // crimes = object
     crimes.scale.x = 5
@@ -76,7 +78,7 @@ function init () {
     scene.add(crimes)
   }, onProgress, onError)
 
-  renderer = new THREE.WebGLRenderer()
+  renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: true })
   renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(window.innerWidth, window.innerHeight)
   container.appendChild(renderer.domElement)
@@ -105,6 +107,12 @@ function onDocumentMouseMove (event) {
 
 function animate () {
   f += 1
+  if (f % 431 === 0) {
+    renderer.autoClear = false
+  }
+  if (f % 139 === 0) {
+    renderer.autoClear = true
+  }
   window.requestAnimationFrame(animate)
   if (crimes && crimes.geometry && crimes.geometry.attributes.position) {
     for (var i = 0; i < crimes.geometry.attributes.position.array.length / 3; i++) {
@@ -115,10 +123,14 @@ function animate () {
       var x = i * 3
       var y = i * 3 + 1
       var z = i * 3 + 2
-      var t = (f + i) * .1
+      var t = (f + i) * 0.1
       a[y] += Math.sin(t) * 0.01
-      a[x] += Math.sin(t) * 0.01
-      a[z] += Math.sin(t) * 0.1
+      a[x] += Math.cos(2 * t) * 0.01
+      if ((i + f) % 3 === 0) {
+        a[z] += Math.tan(3 * t) * 0.01
+      } else {
+        a[z] = og[z]
+      }
     }
     crimes.geometry.attributes.position.needsUpdate = true
   }
