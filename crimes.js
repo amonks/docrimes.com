@@ -116,7 +116,7 @@ function animate () {
       a[y] += Math.sin(t / 13) * 0.001
       a[x] += Math.cos(t / 30) * 0.001
       if ((i + f) % 3 === 0) {
-        a[z] += Math.tan(3 * t) * 0.01
+        a[z] += Math.tan(5 * t) * 0.002
       } else {
         a[z] = og[z]
       }
