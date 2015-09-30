@@ -62,6 +62,20 @@
       z-index: -10;
       color: white;
     }
+    .crimes {
+      animation: blink 0.001s steps(2, start) infinite;
+      -webkit-animation: blink 0.001s steps(2, start) infinite;
+    }
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+    @-webkit-keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
   </style>
 </head>
 <body>
