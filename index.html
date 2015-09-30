@@ -11,10 +11,16 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-    }
-    body {
-      background-image: url("crime.png");
       background-color: black;
+    }
+    .crimes {
+      width: 30%;
+      height: 30%;
+      left: 35%;
+      top: 70%;
+      position: absolute;
+      z-index: 100;
+      background-image: url("docrimes.png");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
@@ -22,6 +28,9 @@
   </style>
 </head>
 <body>
+  <div class="crimes"></div>
+  <script src="http://threejs.org/build/three.min.js"></script>
+  <script src="http://threejs.org/examples/js/loaders/OBJLoader.js"></script>
+  <script src="crimes.js"></script>
 </body>
 </html>
-
