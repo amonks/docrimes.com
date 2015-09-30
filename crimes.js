@@ -103,12 +103,6 @@ function onWindowResize () {
 
 function animate () {
   f += 1
-  if (f % 89 === 0) {
-    renderer.autoClear = false
-  }
-  if (f % 17 === 0) {
-    renderer.autoClear = true
-  }
   window.requestAnimationFrame(animate)
   if (crimes && crimes.geometry && crimes.geometry.attributes.position) {
     for (var i = 0; i < crimes.geometry.attributes.position.array.length / 3; i++) {
@@ -116,10 +110,10 @@ function animate () {
       var x = i * 3
       var y = i * 3 + 1
       var z = i * 3 + 2
-      var t = (f + i) * 0.1
+      var t = (f + i)
 
-      a[y] += Math.sin(t) * 0.01
-      a[x] += Math.cos(2 * t) * 0.01
+      a[y] += Math.sin(t / 13) * 0.001
+      a[x] += Math.cos(t / 30) * 0.001
       if ((i + f) % 3 === 0) {
         a[z] += Math.tan(3 * t) * 0.01
       } else {
