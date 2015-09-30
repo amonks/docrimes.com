@@ -103,10 +103,10 @@ function onWindowResize () {
 
 function animate () {
   f += 1
-  if (f % 431 === 0) {
+  if (f % 89 === 0) {
     renderer.autoClear = false
   }
-  if (f % 139 === 0) {
+  if (f % 17 === 0) {
     renderer.autoClear = true
   }
   window.requestAnimationFrame(animate)
