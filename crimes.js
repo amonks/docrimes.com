@@ -82,7 +82,8 @@ function init () {
     scene.add(crimes)
   }, onProgress, onError)
 
-  renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: true })
+  renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: true, alpha: true })
+  renderer.setClearColor(0x000000, 0)
   renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(window.innerWidth, window.innerHeight)
   container.appendChild(renderer.domElement)

@@ -34,7 +34,6 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-color: black;
     }
     .crimes {
       width: 30%;
@@ -48,9 +47,26 @@
       background-repeat: no-repeat;
       background-position: center center;
     }
+    .do {
+      background-color: black;
+      background-image: url("docrimes.png");
+      background-position: center bottom;
+      background-size: contain;
+      -webkit-filter: grayscale(100%) blur(10px);
+      filter: grayscale(100%) blur(10px);
+      width: 110%;
+      height: 110%;
+      left: -5%;
+      top: -5%;
+      position: absolute;
+      z-index: -10;
+      color: white;
+    }
   </style>
 </head>
 <body>
+  <div class="do">
+  </div>
   <div class="crimes"></div>
   <script src="http://threejs.org/build/three.min.js"></script>
   <script src="http://threejs.org/examples/js/loaders/OBJLoader.js"></script>
