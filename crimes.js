@@ -70,7 +70,7 @@ function init () {
       if (child instanceof THREE.Mesh) {
         console.log('got a mesh!')
         crimes = child
-        child.material = new THREE.MeshNormalMaterial({ overdraw: 0.5 })
+        child.material = new THREE.MeshNormalMaterial({ overdraw: 0.5, wireframe: Math.random() >= 0.5 })
       }
     })
     og = crimes.geometry.attributes.position.array
