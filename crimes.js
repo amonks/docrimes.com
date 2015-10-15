@@ -3,6 +3,7 @@
 var container
 var f = 0
 var crimes
+var cccccc
 var og
 
 var camera
@@ -10,10 +11,17 @@ var controls
 var scene
 var renderer
 
+var wireframeMaterial, normalMaterial, mats
+
 init()
 animate()
 
 function init () {
+
+  wireframeMaterial = new THREE.MeshNormalMaterial({ overdraw: 0.5, wireframe: true })
+  normalMaterial = new THREE.MeshNormalMaterial({ overdraw: 0.5, wireframe: false })
+  mats = [wireframeMaterial, normalMaterial]
+
   container = document.createElement('div')
   document.body.appendChild(container)
 
@@ -70,7 +78,7 @@ function init () {
       if (child instanceof THREE.Mesh) {
         console.log('got a mesh!')
         crimes = child
-        child.material = new THREE.MeshNormalMaterial({ overdraw: 0.5, wireframe: Math.random() >= 0.5 })
+        child.material = wireframeMaterial
       }
     })
     og = crimes.geometry.attributes.position.array
@@ -104,6 +112,8 @@ function onWindowResize () {
 
 function animate () {
   f += 1
+  if (crimes) { crimes.material = mats[f % 3] }
+
   window.requestAnimationFrame(animate)
   if (crimes && crimes.geometry && crimes.geometry.attributes.position) {
     for (var i = 0; i < crimes.geometry.attributes.position.array.length / 3; i++) {
